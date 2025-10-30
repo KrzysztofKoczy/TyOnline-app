@@ -1,25 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-// move to models
-export interface LoginData {
-  email: string;
-  password: string;
-  device: string;
-}
-
-export interface News {
-  id: number;
-  title: string;
-  content: string;
-  date: string;
-}
-
-export interface User {
-  id: string;
-  username: string;
-}
+import { LoginData, News, User } from '../model/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class RestService {

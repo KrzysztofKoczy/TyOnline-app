@@ -1,6 +1,7 @@
 import { inject, signal } from '@angular/core';
-import { News, RestService } from '../../../core/api/rest.service';
+import { RestService } from '../../../core/api/rest.service';
 import { map } from 'rxjs';
+import { News } from '../model/news.types';
 
 export class NewsService {
   readonly loading = signal(false);
