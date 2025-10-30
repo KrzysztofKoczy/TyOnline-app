@@ -2,21 +2,29 @@
 	<form [formGroup]="form" (ngSubmit)="submit()">
 		<mat-form-field appearance="outline" class="full">
 			<mat-label>Email</mat-label>
-			<input matInput formControlName="email" type="email" required />
+			<input matInput formControlName="email" type="email" required maxlength="256" />
 			@if (form.controls.email.touched && form.controls.email.invalid) {
 				<mat-error>Podaj poprawny adres email</mat-error>
 			}
 		</mat-form-field>
 		<mat-form-field appearance="outline" class="full">
 			<mat-label>Hasło</mat-label>
-			<input matInput formControlName="password" type="password" required />
-			@if (form.controls.password.touched && form.controls.password.invalid) {
-				<mat-error>Hasło jest wymagane (min 6 znaków)</mat-error>
+			<input matInput formControlName="password" [type]="showPassword() ? 'text' : 'password'" required maxlength="128" />
+		
+			@if (form.get('password')?.value) {
+				<button mat-icon-button type="button" matSuffix (click)="showPassword.set(!showPassword())" [attr.aria-label]="showPassword() ? 'Ukryj hasło' : 'Pokaż hasło'">
+					<mat-icon>{{ showPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+				</button>
 			}
+
+			@if (form.controls.password.touched && form.controls.password.invalid) {
+				<mat-error>Hasło jest wymagane (min 3 znaki)</mat-error>
+			}
+			
 		</mat-form-field>
-		<button mat-raised-button color="primary" [disabled]="loading() || form.invalid">Zaloguj</button>
+		<button mat-raised-button color="primary" type="submit" [disabled]="loading() || form.invalid">Zaloguj</button>
 	</form>
-	<!-- handle error - tooltip or just text -->
+	@if (errorMsg()) {
+		<mat-error> {{ errorMsg() }} </mat-error>
+	}
 </div>
-
-
