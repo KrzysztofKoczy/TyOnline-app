@@ -5,7 +5,7 @@
 
 			<mat-form-field appearance="outline" class="full">
 				<mat-label>Email</mat-label>
-				<input matInput formControlName="email" type="email" required maxlength="256" />
+				<input matInput formControlName="email" type="email" required maxlength="256" autocomplete="email" />
 
 				@if (form.controls.email.touched && form.controls.email.invalid) {
 					<mat-error>Podaj poprawny adres email</mat-error>
@@ -14,7 +14,7 @@
 
 			<mat-form-field appearance="outline" class="full">
 				<mat-label>Hasło</mat-label>
-				<input matInput formControlName="password" [type]="showPassword() ? 'text' : 'password'" required maxlength="128" />
+				<input matInput formControlName="password" [type]="showPassword() ? 'text' : 'password'" required maxlength="128" autocomplete="current-password" />
 			
 				@if (form.get('password')?.value) {
 					<button mat-icon-button type="button" matSuffix (click)="showPassword.set(!showPassword())" [attr.aria-label]="showPassword() ? 'Ukryj hasło' : 'Pokaż hasło'">
