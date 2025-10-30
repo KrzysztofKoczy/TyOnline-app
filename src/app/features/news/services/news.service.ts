@@ -1,7 +1,6 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, signal } from '@angular/core';
 import { News, RestService } from '../../../core/api/rest.service';
 import { map } from 'rxjs';
-import { dateToTimestamp } from '../../../core/helpers/date.util';
 
 export class NewsService {
   readonly loading = signal(false);
@@ -19,7 +18,7 @@ export class NewsService {
   private fetchNews(): void {
     // think about change to httpResource
     this.restService.getNews()
-      .pipe(map((news) => news.sort((a, b) => dateToTimestamp(b.date) - dateToTimestamp(a.date))))
+      .pipe(map((news) => news.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))))
       .subscribe({
         next: (news) => {
           this.items.set(news);

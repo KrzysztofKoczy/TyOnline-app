@@ -19,7 +19,7 @@ export class AppHeader implements OnInit {
 	readonly userName = computed(() => (this.auth.user() as any)?.username ?? (this.auth.user() as any)?.name ?? '');
 	readonly isAuth = this.auth.isAuthenticated;
 
-	logout() {
+	logout(): void {
 		this.auth.logout().subscribe({ next: () => this.router.navigateByUrl('/login') });
 	}
 

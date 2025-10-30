@@ -23,7 +23,7 @@ export interface User {
 
 @Injectable({ providedIn: 'root' })
 export class RestService {
-  private httpClient = inject(HttpClient)
+  private httpClient = inject(HttpClient);
 
   login(data: LoginData): Observable<{ token: string }> {
     return this.httpClient.post<{ token: string }>('https://test.tyonline.pl/login', data);
