@@ -17,7 +17,6 @@ export class NewsService {
   }
 
   private fetchNews(): void {
-    // think about change to httpResource
     this.restService.getNews()
       .pipe(map((news) => news.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))))
       .subscribe({
@@ -26,7 +25,7 @@ export class NewsService {
           this.loading.set(false);
         },
         error: (error) => {
-          this.error.set('Nie udało się pobrać newsów. Spróbuj ponownie.');
+          this.error.set(`Błąd przy pobieraniu newsów: ${error.message}`);
           this.loading.set(false);
         },
       });

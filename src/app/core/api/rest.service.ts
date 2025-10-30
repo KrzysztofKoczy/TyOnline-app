@@ -19,8 +19,8 @@ export class RestService {
     return this.httpClient.get<Partial<User>>('https://test.tyonline.pl/login');
   }
 
-  getNews(): Observable<Array<News>> {
-    return this.httpClient.get<Array<News>>('https://test.tyonline.pl/news');
+  getNews(): Observable<News[]> {
+    return this.httpClient.get<News[]>('https://test.tyonline.pl/news');
   }
 }
 

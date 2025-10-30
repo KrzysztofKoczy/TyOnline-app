@@ -20,15 +20,14 @@ export class AppHeader implements OnInit {
 
 	userName = signal<string>('');
 
-	logout(): void {
-		this.auth.logout().subscribe({ next: () => this.router.navigateByUrl('/login') });
-	}
-
 	ngOnInit(): void {
 		this.rest.getCurrentUser().subscribe((user) => {
 			this.userName.set(user.username!);
-			console.log(user);
 		});
+	}
+
+	logout(): void {
+		this.auth.logout().subscribe({ next: () => this.router.navigateByUrl('/login') });
 	}
 }
 
