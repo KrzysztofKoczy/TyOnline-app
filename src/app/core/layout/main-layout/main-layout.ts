@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppHeader } from '../header/app-header';
 
@@ -11,5 +11,6 @@ import { AppHeader } from '../header/app-header';
       <router-outlet/>
     </main>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayout {}
