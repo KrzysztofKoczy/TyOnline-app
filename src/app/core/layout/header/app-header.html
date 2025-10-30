@@ -1,8 +1,10 @@
 <mat-toolbar class="app-header" color="primary">
 	@if (userName()) {
-		<span>TyOnline</span>
 		<span>Witaj, {{ userName() }}</span>
-		<button mat-button (click)="logout()">Wyloguj</button>
+		<button mat-button (click)="logout()">
+			Wyloguj
+			<mat-icon>logout</mat-icon>
+		</button>
 	}
 </mat-toolbar>
 

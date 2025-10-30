@@ -1,10 +1,13 @@
 <div class="container">
 	@if (error()) {
-		<div class="error">{{ error() }}</div>
+		<p class="error">{{ error() }}</p>
 	}
 
 	@if (loading()) {
-		<div>Ładowanie...</div>
+	 <div class="loading-container">
+		<mat-spinner diameter="48"></mat-spinner>
+		<p>Ładowanie...</p>
+	 </div>
 	}
 
 	@if (!loading() && !error()) {
@@ -12,14 +15,9 @@
 		<mat-card class="news-card">
 			<mat-card-header>
 				<mat-card-title>{{ item.title }}</mat-card-title>
-				<!-- create pipe for date if necessary -->
 				<mat-card-subtitle>{{ item.date | date:'dd.MM.yyyy HH:mm' }}</mat-card-subtitle>
 			</mat-card-header>
 			<mat-card-content>
-				<!-- NOTE (to README): używamy [innerHTML] bez dodatkowej sanitizacji,
-				     ponieważ Angular domyślnie sanityzuje HTML (usuwa niebezpieczne tagi/atrybuty).
-				     Nie stosujemy bypassSecurityTrustHtml. W razie potrzeby ostrzejszej polityki
-				     można dodać DOMPurify i helper getSanitizedContent(). -->
 				<div [innerHTML]="item.content"></div>
 			</mat-card-content>
 		</mat-card>

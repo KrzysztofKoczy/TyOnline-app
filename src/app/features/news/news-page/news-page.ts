@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { NewsService } from '../services/news.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
 	selector: 'app-news-page',
-	imports: [CommonModule, MatCardModule],
+	imports: [CommonModule, MatCardModule, MatProgressSpinnerModule],
 	providers: [NewsService],
 	templateUrl: './news-page.html',
 	styleUrls: ['./news-page.scss'],

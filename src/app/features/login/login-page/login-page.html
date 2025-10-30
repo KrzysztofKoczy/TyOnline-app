@@ -1,30 +1,37 @@
-<div class="login-container">
-	<form [formGroup]="form" (ngSubmit)="submit()">
-		<mat-form-field appearance="outline" class="full">
-			<mat-label>Email</mat-label>
-			<input matInput formControlName="email" type="email" required maxlength="256" />
-			@if (form.controls.email.touched && form.controls.email.invalid) {
-				<mat-error>Podaj poprawny adres email</mat-error>
-			}
-		</mat-form-field>
-		<mat-form-field appearance="outline" class="full">
-			<mat-label>Hasło</mat-label>
-			<input matInput formControlName="password" [type]="showPassword() ? 'text' : 'password'" required maxlength="128" />
-		
-			@if (form.get('password')?.value) {
-				<button mat-icon-button type="button" matSuffix (click)="showPassword.set(!showPassword())" [attr.aria-label]="showPassword() ? 'Ukryj hasło' : 'Pokaż hasło'">
-					<mat-icon>{{ showPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
-				</button>
-			}
+<div class="login-page">
+  <div class="login-box">
+    <h2>Zaloguj się</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()">
 
-			@if (form.controls.password.touched && form.controls.password.invalid) {
-				<mat-error>Hasło jest wymagane (min 3 znaki)</mat-error>
-			}
+			<mat-form-field appearance="outline" class="full">
+				<mat-label>Email</mat-label>
+				<input matInput formControlName="email" type="email" required maxlength="256" />
+
+				@if (form.controls.email.touched && form.controls.email.invalid) {
+					<mat-error>Podaj poprawny adres email</mat-error>
+				}
+			</mat-form-field>
+
+			<mat-form-field appearance="outline" class="full">
+				<mat-label>Hasło</mat-label>
+				<input matInput formControlName="password" [type]="showPassword() ? 'text' : 'password'" required maxlength="128" />
 			
-		</mat-form-field>
-		<button mat-raised-button color="primary" type="submit" [disabled]="loading() || form.invalid">Zaloguj</button>
-	</form>
-	@if (errorMsg()) {
-		<mat-error> {{ errorMsg() }} </mat-error>
-	}
+				@if (form.get('password')?.value) {
+					<button mat-icon-button type="button" matSuffix (click)="showPassword.set(!showPassword())" [attr.aria-label]="showPassword() ? 'Ukryj hasło' : 'Pokaż hasło'">
+						<mat-icon>{{ showPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+					</button>
+				}
+
+				@if (form.controls.password.touched && form.controls.password.invalid) {
+					<mat-error>Hasło jest wymagane (min 3 znaki)</mat-error>
+				}
+			</mat-form-field>
+
+			<button mat-raised-button color="primary" class="submit-btn" type="submit" [disabled]="loading() || form.invalid">Zaloguj się</button>
+    </form>
+		
+    @if (errorMsg()) {
+			<mat-error>{{ errorMsg() }}</mat-error>
+    }
+  </div>
 </div>
