@@ -1,6 +1,6 @@
 <mat-toolbar class="app-header" color="primary">
-	<span>TyOnline</span>
-	@if (isAuth()) {
+	@if (userName()) {
+		<span>TyOnline</span>
 		<span>Witaj, {{ userName() }}</span>
 		<button mat-button (click)="logout()">Wyloguj</button>
 	}
