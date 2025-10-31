@@ -11,7 +11,7 @@ import { detectBrowserName } from '../../../utils/browser.utils';
 
 @Component({
 	selector: 'app-login-page',
-  imports: [
+	imports: [
 		CommonModule, 
 		ReactiveFormsModule, 
 		MatButtonModule, 
@@ -28,9 +28,9 @@ export class LoginPage {
 	private authService = inject(AuthService);
 	private router = inject(Router);
 
-  loading = signal(false);
-  showPassword = signal(false);
-  errorMsg = signal<string | null>(null);
+	loading = signal(false);
+	showPassword = signal(false);
+	errorMsg = signal<string | null>(null);
 	form = this.formBuilder.group({
 		email: ['', [Validators.required, Validators.email, Validators.maxLength(256)]],
 		password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(128)]]
@@ -41,7 +41,7 @@ export class LoginPage {
 			return;
 		}
 
-    this.loading.set(true);
+	  this.loading.set(true);
 
 		const device = detectBrowserName();
 
@@ -54,7 +54,7 @@ export class LoginPage {
 					this.loading.set(false)
 				},
 				error: (error) => {
-					this.errorMsg.set("Błedne hasło lub email");
+					this.errorMsg.set("Błędne hasło lub email");
 					this.loading.set(false);
 				}
 			});

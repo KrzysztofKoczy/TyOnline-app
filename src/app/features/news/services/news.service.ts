@@ -4,11 +4,11 @@ import { map } from 'rxjs';
 import { News } from '../../../core/model/interfaces';
 
 export class NewsService {
+  private restService = inject(RestService);
+
   readonly loading = signal(false);
   readonly error = signal<string | null>(null);
   readonly items = signal<News[]>([]);
-
-  private restService = inject(RestService);
 
   loadNews(): void {
     this.loading.set(true);
