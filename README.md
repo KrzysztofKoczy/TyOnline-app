@@ -1,4 +1,4 @@
-# News App with Interceptor i testami (Karma/Jasmine)
+# News App
 
 Projekt stworzony przy użyciu [Angular CLI](https://github.com/angular/angular-cli) w wersji 20.1.3.
 
@@ -6,7 +6,7 @@ Aplikacja do wyświetlania newsów z zabezpieczonym logowaniem, nagłówkiem z p
 
 ## 🚀 Live Demo
 
-Sprawdź aplikację live: [TYOnline News App Demo](https://krzysztofkoczy.github.io/TyOnline-App/)
+Sprawdź aplikację live: [TYOnline News App Demo](https://krzysztofkoczy.github.io/TyOnline-app/)
 
 ## Funkcje
 
