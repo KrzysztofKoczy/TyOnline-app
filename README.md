@@ -66,7 +66,7 @@ ng test
 - Dane użytkownika są pobierane z API `GET https://test.tyonline.pl/login`.
 - Przycisk do wylogowania „Wyloguj” - `GET https://test.tyonline.pl/logout` plus przekierowania do strony logowania.
 
-### 3) Logowanie- 
+### 3) Logowanie
 - Formularz logowania (`LoginPage`) z użyciem `ReactiveForms` i walidacją.
 - Do żądania `POST https://test.tyonline.pl/login` automatycznie dodawane jest pole `device` (nazwa przeglądarki) pozyskane przez `detectBrowserName()` (`src/app/utils/browser.utils.ts`).
 - Po poprawnym logowaniu aplikacja zapisuje token i używa go w kolejnych zapytaniach jako Bearer Token (patrz Interceptor).
@@ -87,7 +87,7 @@ ng test
 - Ekrany funkcjonalne trzymane modułowo w `features/login` i `features/news`.
 
 ### Wykrywanie nazwy przeglądarki (pole `device`)
-- Pierwotnie zastosowano podejście oparte o regex na `userAgent`, ale nie było ono optymalne i nie ciężko było złapać wszystkie przypadki.
+- Pierwotnie zastosowano podejście oparte o regex na `userAgent`, ale nie było ono optymalne i ciężko było złapać wszystkie przypadki.
 - Po researchu zdecydowałem się na użycie lekkiej biblioteki `detect-browser` jako fallback oraz UA‑CH (`navigator.userAgentData`).
 - Implementacja: `src/app/utils/browser.utils.ts` (`detectBrowserName()`), używana w `LoginPage` przy wysyłce formularza logowania.
 
